@@ -1,0 +1,89 @@
+/* Show title of unread tabs with red and italic font */
+:root.sidebar tab-item.unread .label-content {
+  font-style: italic !important;
+}
+
+:root.sidebar
+{
+  --tst-animate-time: 120ms; 
+  --tst-ease: ease-out;
+  --newtab-button-width: 100px;
+  
+  --thin-tab-width: 100px;
+  --wide-tab-width: 400px;
+  --close-box-display: normal;
+}
+
+tab-item:not(.pinned) ::part(extra-contents-by-tst-indent-line_piro_sakura_ne_jp indent-line)
+{
+  display: var(--close-box-display);
+}
+
+
+/*Add private browsing indicator per tab */
+:root.sidebar tab-item.private-browsing tab-label:before {
+  content: "🕶";
+}
+
+#sidebar-box[sidebarcommand=treestyletab_piro_sakura_ne_jp-sidebar-action] > #sidebar-header{
+  display: none;
+}
+
+tab-item:hover tab-item-substance {
+  transition: all var(-tst-animate-time) var(--tst-ease)!important;
+  height: 48px;
+}
+
+tab-item:not(:hover) tab-item-substance{
+  transition: all var(-tst-animate-time) var(--tst-ease)!important;
+  height: 28px;
+}
+
+:root.sidebar, 
+.after-tabs
+{
+   transition: all var(--tst-animate-time) var(--tst-ease) !important;
+}
+
+:root.sidebar:hover
+{
+  --newtab-button-width: var(--wide-tab-width);
+  --close-box-display: normal;
+}
+
+:root.sidebar:not(:hover)
+{
+  --newtab-button-width: var(--thin-tab-width);
+  --close-box-display: none;
+}
+
+:root.sidebar:hover tab-label
+{
+   margin-left: 10px;
+   filter: brightness(0.85);
+}
+
+:root.sidebar:not(:hover) tab-label
+{
+   margin-left: -30px;
+   color: transparent;
+}
+
+:root.sidebar:hover tab-item-substance
+{
+   transition: all var(--tst-animate-time) var(--tst-ease) !important;
+}
+:root.sidebar:not(:hover) tab-item-substance
+{
+   transition: all var(--tst-animate-time) var(--tst-ease) !important;
+   margin-left: 5%;
+}
+
+div vbox #tabbar, .after-tabs{
+  width: var(--newtab-button-width) !important;
+}
+
+div .closebox
+{
+  display: var(--close-box-display);
+}
